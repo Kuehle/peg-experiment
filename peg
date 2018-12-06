@@ -1,0 +1,35 @@
+start
+	= paragraph*
+
+paragraph
+	= annotation:(annotation)  dialog:(user bot)+ "\n"* { return {annotation, dialog}} 
+
+annotation
+	= "[" intent:word condition:("; " condition)*   "]\n" { return {intent, condition} }
+    
+condition
+	= key:word compare:compare value:value {return {key, compare, value}}
+    
+word
+	= chars:[a-zA-Z_]+ { return chars.join("") }
+    
+compare
+	= ("<"/">"/"<="/"=="/"!="/"===")
+    
+value
+	= word / integer
+    
+integer
+  = digits:[0-9]+ { return parseInt(digits.join(""), 10); }
+
+user
+	= "U " + user:sentence + "\n" { return {user} }
+
+bot
+	= "B " + bot:sentence + "\n" { return {bot} }
+
+sentence
+	= chars:[^\S\r\n]+ { return chars.join("").split(';').map(el => el.trim()) }
+    
+linebreak
+	= [\S\r\n]
