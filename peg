@@ -5,7 +5,10 @@ paragraph
 	= annotation:(annotation)  dialog:(user bot)+ "\n"* { return {annotation, dialog}} 
 
 annotation
-	= "[" intent:word condition:("; " condition)*   "]\n" { return {intent, condition} }
+	= "[" intent:word conditions:("; " conditions:condition)*   "]\n" { 
+    	conditions = conditions.map(condition => condition[1])
+        return {intent, conditions} 
+    }
     
 condition
 	= key:word compare:compare value:value {return {key, compare, value}}

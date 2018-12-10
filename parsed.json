@@ -1,0 +1,80 @@
+[
+    {
+      "annotation": {
+        "intent": "Hilfe",
+        "conditions": [
+          {
+            "key": "location",
+            "compare": "==",
+            "value": "Bamberg"
+          }
+        ]
+      },
+      "dialog": [
+        [
+          {
+            "user": [
+              [
+                "Hilfe"
+              ]
+            ]
+          },
+          {
+            "bot": [
+              [
+                "Ich kann ..."
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "intent": "Abbrechen",
+        "conditions": []
+      },
+      "dialog": [
+        [
+          {
+            "user": [
+              [
+                "Abbrechen"
+              ]
+            ]
+          },
+          {
+            "bot": [
+              [
+                "Okay"
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "intent": "Danke",
+        "conditions": []
+      },
+      "dialog": [
+        [
+          {
+            "user": [
+              [
+                "Danke"
+              ]
+            ]
+          },
+          {
+            "bot": [
+              [
+                "Gern geschehen"
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  ]

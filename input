@@ -1,4 +1,11 @@
-[HelloIntent]
-U Hello; Hi
-B Hi, how are you?; Hey, how are you?
+[Hilfe; location==Bamberg]
+U Hilfe
+B Ich kann ...
 
+[Abbrechen]
+U Abbrechen
+B Okay
+
+[Danke]
+U Danke
+B Gern geschehen
