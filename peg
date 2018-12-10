@@ -2,7 +2,10 @@ start
 	= paragraph*
 
 paragraph
-	= annotation:(annotation)  dialog:(user bot)+ "\n"* { return {annotation, dialog}} 
+	= annotation:(annotation)  dialog:(user bot)+ "\n"* { 
+		dialog = dialog.reduce((acc, el) => acc = [...acc, ...el])
+		return {annotation, dialog}
+	} 
 
 annotation
 	= "[" intent:word conditions:("; " conditions:condition)*   "]\n" { 
@@ -26,10 +29,10 @@ integer
   = digits:[0-9]+ { return parseInt(digits.join(""), 10); }
 
 user
-	= "U " + user:sentence + "\n" { return {user} }
+	= "U " + user:sentence + "\n" { return {user: user[0]} }
 
 bot
-	= "B " + bot:sentence + "\n" { return {bot} }
+	= "B " + bot:sentence + "\n" { return {bot: bot[0]} }
 
 sentence
 	= chars:[^\S\r\n]+ { return chars.join("").split(';').map(el => el.trim()) }

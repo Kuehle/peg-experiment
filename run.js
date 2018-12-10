@@ -1,11 +1,52 @@
 const fs = require('fs')
+const session = btoa('' + Math.random() + new Date().getTime())
 
 const parsed = JSON.parse(fs.readFileSync('parsed.json'))
 
-console.log(createTestCode(parsed[0]))
+console.log(createTestFile(parsed))
 
 function createRequestBody(paragraph) {
-    return paragraph.annotation
+    return JSON.stringify(paragraph.annotation)
+
+    const body = {
+        "responseId": btoa('' + Math.random() + new Date().getTime()),
+        "queryResult": {
+          "queryText": "",
+          // TODO from annotation (compare)
+          "parameters": {
+            "Parameter": "Value that fits criteria"
+          },
+          "allRequiredParamsPresent": true,
+          "fulfillmentMessages": [
+            {
+              "text": {
+                "text": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "outputContexts": [
+            // {
+            //   "name": "projects/test",
+            //   "lifespanCount": 1,
+            //   "parameters": {
+            //      "Parameter": "Value that fits criteria"
+            //   }
+            // }
+          ],
+          "intent": {
+            "name": btoa('' + Math.random() + new Date().getTime()), // "projects/dexa-developer-agent-refact-fm/agent/intents/3096cb6b-5858-4d22-8d84-caa1d478fd5e",
+            "displayName": paragraph.annotation.intent
+          },
+          "intentDetectionConfidence": 1,
+          "languageCode": "de"
+        },
+        "originalDetectIntentRequest": {
+          "payload": {}
+        },
+        "session": "projects/" + btoa('' + Math.random() + new Date().getTime())
+      }
 }
 
 function createTestFile(paragraphs) {
@@ -23,7 +64,7 @@ describe('The API should work for', () => {
 
 function createTestCode(paragraph) {
     return `
-    it('[${paragraph.annotation.intent}] ${paragraph.annotation.conditions && paragraph.annotation.conditions ? printConditions(paragraph.annotation.conditions) : 'none'}', (done) => {
+    it('[${paragraph.annotation.intent}]${paragraph.annotation.conditions && paragraph.annotation.conditions ? printConditions(paragraph.annotation.conditions) : 'none'}', (done) => {
         request({
             uri: API_ENDPOINT + '/dialogflow/message',
             method: 'POST',
@@ -38,5 +79,5 @@ function createTestCode(paragraph) {
 }
 
 function printConditions(conditions) {
-    return conditions.reduce((acc, condition) => acc += `(${condition.key} ${condition.compare} ${condition.value}) `, '')
+    return conditions.reduce((acc, condition) => acc += ` (${condition.key} ${condition.compare} ${condition.value})`, '')
 }

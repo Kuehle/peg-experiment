@@ -11,22 +11,16 @@
         ]
       },
       "dialog": [
-        [
-          {
-            "user": [
-              [
-                "Hilfe"
-              ]
-            ]
-          },
-          {
-            "bot": [
-              [
-                "Ich kann ..."
-              ]
-            ]
-          }
-        ]
+        {
+          "user": [
+            "Hilfe"
+          ]
+        },
+        {
+          "bot": [
+            "Ich kann ..."
+          ]
+        }
       ]
     },
     {
@@ -35,22 +29,16 @@
         "conditions": []
       },
       "dialog": [
-        [
-          {
-            "user": [
-              [
-                "Abbrechen"
-              ]
-            ]
-          },
-          {
-            "bot": [
-              [
-                "Okay"
-              ]
-            ]
-          }
-        ]
+        {
+          "user": [
+            "Abbrechen"
+          ]
+        },
+        {
+          "bot": [
+            "Okay"
+          ]
+        }
       ]
     },
     {
@@ -59,22 +47,16 @@
         "conditions": []
       },
       "dialog": [
-        [
-          {
-            "user": [
-              [
-                "Danke"
-              ]
-            ]
-          },
-          {
-            "bot": [
-              [
-                "Gern geschehen"
-              ]
-            ]
-          }
-        ]
+        {
+          "user": [
+            "Danke"
+          ]
+        },
+        {
+          "bot": [
+            "Gern geschehen"
+          ]
+        }
       ]
     }
   ]
