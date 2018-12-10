@@ -6,16 +6,15 @@ const parsed = JSON.parse(fs.readFileSync('parsed.json'))
 console.log(createTestFile(parsed))
 
 function createRequestBody(paragraph) {
-    return JSON.stringify(paragraph.annotation)
-
-    const body = {
+    return {
         "responseId": btoa('' + Math.random() + new Date().getTime()),
         "queryResult": {
           "queryText": "",
-          // TODO from annotation (compare)
-          "parameters": {
-            "Parameter": "Value that fits criteria"
-          },
+          "parameters": paragraph.annotation.conditions.reduce((acc, condition) => {
+            let el = {}
+            el[key] = conditionToValue(condition)
+            return Object.assign({}, acc, el)
+          }, {}),
           "allRequiredParamsPresent": true,
           "fulfillmentMessages": [
             {
@@ -47,6 +46,27 @@ function createRequestBody(paragraph) {
         },
         "session": "projects/" + btoa('' + Math.random() + new Date().getTime())
       }
+}
+
+function conditionToValue(condition) {
+    switch (condition.compare) {
+        case '==':
+        case '===':
+        case '<=':
+        case '>=':
+            return condition.value
+            break;
+        case '<':
+            return parseInt(condition.value, 10)--;
+            break;
+        case '>':
+            return parseInt(condition.value, 10)++;
+            break;
+        // '!='
+        default:
+            return parseInt(condition.value) == 'NaN' ? 'Anything other than [specified value]' : parseInt(condition.value, 10)++
+            break;
+    }
 }
 
 function createTestFile(paragraphs) {
