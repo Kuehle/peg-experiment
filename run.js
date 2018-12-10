@@ -95,7 +95,9 @@ function createTestCode(paragraph) {
             json: ${createRequestBody(paragraph)}
         }, (err, res, body) => {
             if (err) done.fail(err)
+            // expect.stringMatching(string | regexp)
             expect(res.statusCode).toBe(200)
+            expect(body).toBe(5)
             done()
         })
     })

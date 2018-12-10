@@ -10,10 +10,12 @@ describe('The API should work for', () => {
         request({
             uri: API_ENDPOINT + '/dialogflow/message',
             method: 'POST',
-            json: {"responseId":"MC41ODcwMjYxNjkzNDY0MzcxMTU0NDQ1MDM1MjkzMw==","queryResult":{"queryText":"","parameters":{"location":"Bamberg"},"allRequiredParamsPresent":true,"fulfillmentMessages":[{"text":{"text":[""]}}],"outputContexts":[],"intent":{"name":"MC45MjE5MjA5NTE0OTQ4MTkyMTU0NDQ1MDM1MjkzMw==","displayName":"Hilfe"},"intentDetectionConfidence":1,"languageCode":"de"},"originalDetectIntentRequest":{"payload":{}},"session":"projects/MC45NzY1MzY2NTYzODIwNzMyMTU0NDQ1MDM1MjkzMw=="}
+            json: {"responseId":"MC4xODg4MDY0NDE0NzQ4NjYyNTE1NDQ0NTE0MzMyNTM=","queryResult":{"queryText":"","parameters":{"location":"Bamberg"},"allRequiredParamsPresent":true,"fulfillmentMessages":[{"text":{"text":[""]}}],"outputContexts":[],"intent":{"name":"MC4yNzI0MDk4MzA0NTM0MTI0MTU0NDQ1MTQzMzI1NA==","displayName":"Hilfe"},"intentDetectionConfidence":1,"languageCode":"de"},"originalDetectIntentRequest":{"payload":{}},"session":"projects/MC43ODkyODI1MjUyMjk4MDIxMTU0NDQ1MTQzMzI1NA=="}
         }, (err, res, body) => {
             if (err) done.fail(err)
+            // expect.stringMatching(string | regexp)
             expect(res.statusCode).toBe(200)
+            expect(body).toBe(5)
             done()
         })
     })
@@ -22,10 +24,12 @@ describe('The API should work for', () => {
         request({
             uri: API_ENDPOINT + '/dialogflow/message',
             method: 'POST',
-            json: {"responseId":"MC44ODQwMzgxMDkwMjc4NTkxMTU0NDQ1MDM1MjkzMw==","queryResult":{"queryText":"","parameters":{},"allRequiredParamsPresent":true,"fulfillmentMessages":[{"text":{"text":[""]}}],"outputContexts":[],"intent":{"name":"MC41OTYyNTYzMTQxMDUwMTI4MTU0NDQ1MDM1MjkzMw==","displayName":"Abbrechen"},"intentDetectionConfidence":1,"languageCode":"de"},"originalDetectIntentRequest":{"payload":{}},"session":"projects/MC4xNTU3NTUyMzAyODk1Njg0MTU0NDQ1MDM1MjkzMw=="}
+            json: {"responseId":"MC45OTQ0MTI0MTAxNjg5MjM4MTU0NDQ1MTQzMzI1NA==","queryResult":{"queryText":"","parameters":{},"allRequiredParamsPresent":true,"fulfillmentMessages":[{"text":{"text":[""]}}],"outputContexts":[],"intent":{"name":"MC4xODA0OTAzNzQwMDE1MjM1NzE1NDQ0NTE0MzMyNTQ=","displayName":"Abbrechen"},"intentDetectionConfidence":1,"languageCode":"de"},"originalDetectIntentRequest":{"payload":{}},"session":"projects/MC4zNzcwMzE0MDgwNjU2MTIzMTU0NDQ1MTQzMzI1NA=="}
         }, (err, res, body) => {
             if (err) done.fail(err)
+            // expect.stringMatching(string | regexp)
             expect(res.statusCode).toBe(200)
+            expect(body).toBe(5)
             done()
         })
     })
@@ -34,10 +38,12 @@ describe('The API should work for', () => {
         request({
             uri: API_ENDPOINT + '/dialogflow/message',
             method: 'POST',
-            json: {"responseId":"MC40OTgyNDcwMzQwMTQyMTg2NjE1NDQ0NTAzNTI5MzM=","queryResult":{"queryText":"","parameters":{},"allRequiredParamsPresent":true,"fulfillmentMessages":[{"text":{"text":[""]}}],"outputContexts":[],"intent":{"name":"MC44MTU1OTcxMTYxNDMzMzk3MTU0NDQ1MDM1MjkzMw==","displayName":"Danke"},"intentDetectionConfidence":1,"languageCode":"de"},"originalDetectIntentRequest":{"payload":{}},"session":"projects/MC45NDI3OTA1ODI0NzQ3NzczMTU0NDQ1MDM1MjkzMw=="}
+            json: {"responseId":"MC43OTU3NTQ5NTY5NDk1MjM3MTU0NDQ1MTQzMzI1NA==","queryResult":{"queryText":"","parameters":{},"allRequiredParamsPresent":true,"fulfillmentMessages":[{"text":{"text":[""]}}],"outputContexts":[],"intent":{"name":"MC40ODI5OTEzMjcwOTE0NjUyMTU0NDQ1MTQzMzI1NA==","displayName":"Danke"},"intentDetectionConfidence":1,"languageCode":"de"},"originalDetectIntentRequest":{"payload":{}},"session":"projects/MC4xODg5MTU2Njg3NjcwMDAxNzE1NDQ0NTE0MzMyNTQ="}
         }, (err, res, body) => {
             if (err) done.fail(err)
+            // expect.stringMatching(string | regexp)
             expect(res.statusCode).toBe(200)
+            expect(body).toBe(5)
             done()
         })
     })
